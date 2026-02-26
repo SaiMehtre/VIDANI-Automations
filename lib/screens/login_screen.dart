@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../services/auth_service.dart';
 import 'dashboard_screen.dart';
 import '../services/secure_storage_service.dart';
+import '../core/session_manager.dart';
 // import 'package:shared_preferences/shared_preferences.dart'; // keep only for rememberMe flag
 
 
@@ -54,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
       await SecureStorageService.saveToken(result.token!);
       await SecureStorageService.saveUsername(username);
     } else {
-      await SecureStorageService.clearAll();
+      SessionManager.setToken(result.token!);  // 🔥 memory me store
     }
 
     Navigator.pushReplacement(
