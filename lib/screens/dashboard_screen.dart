@@ -6,6 +6,7 @@ import '../services/secure_storage_service.dart';
 import '../state/dashboard_state.dart';
 import 'device_detail_screen.dart';
 import '../services/device_service.dart';
+import '../core/session_manager.dart';
 // import 'package:shared_preferences/shared_preferences.dart';  // use only if THIS ACTION BUTTON IS FOR SIGH OUT PASSWORD AND USER NAME VANISH
 
 
@@ -411,7 +412,8 @@ bool isOnlineFromTime(String? updatedAt) {
                     margin: const EdgeInsets.only(right: 12),
                     child: OutlinedButton(
                       onPressed: () async {
-                        await SecureStorageService.clearAll();
+                        await SecureStorageService.deleteToken();
+                        SessionManager.clear();
 
                         if (!mounted) return;
 

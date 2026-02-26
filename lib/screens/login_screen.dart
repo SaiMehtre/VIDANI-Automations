@@ -54,6 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (rememberMe) {
       await SecureStorageService.saveToken(result.token!);
       await SecureStorageService.saveUsername(username);
+      await SecureStorageService.savePassword(password);
     } else {
       SessionManager.setToken(result.token!);  // 🔥 memory me store
     }
@@ -78,6 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
 void initState() {
   super.initState();
+  _loadSavedCredentials();
   _checkAutoLogin();
 }
 
@@ -99,7 +101,18 @@ Future<void> _checkAutoLogin() async {
     );
   }
 }
+Future<void> _loadSavedCredentials() async {
+  final savedUsername = await SecureStorageService.getUsername();
+  final savedPassword = await SecureStorageService.getPassword();
 
+  if (savedUsername != null && savedPassword != null) {
+    _usernameController.text = savedUsername;
+    _passwordController.text = savedPassword;
+    setState(() {
+      rememberMe = true;
+    });
+  }
+}
 @override
 void dispose() {
   _usernameController.dispose();

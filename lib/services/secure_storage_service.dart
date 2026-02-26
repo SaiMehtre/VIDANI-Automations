@@ -5,6 +5,7 @@ class SecureStorageService {
 
   static const String _tokenKey = "auth_token";
   static const String _usernameKey = "username";
+  static const String _passwordKey = "password";
 
   // Save token
   static Future<void> saveToken(String token) async {
@@ -30,5 +31,15 @@ class SecureStorageService {
 
   static Future<void> clearAll() async {
     await _storage.deleteAll();
+  }
+
+  //save password
+  // Save password
+  static Future<void> savePassword(String password) async {
+    await _storage.write(key: _passwordKey, value: password);
+  }
+
+  static Future<String?> getPassword() async {
+    return await _storage.read(key: _passwordKey);
   }
 }
