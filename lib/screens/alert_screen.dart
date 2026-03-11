@@ -195,7 +195,7 @@ Future<void> fetchAlerts() async {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // 🔥 ICON WITH SOFT BACKGROUND (LIKE IMAGE)
+                    // ICON WITH SOFT BACKGROUND (LIKE IMAGE)
                     Container(
                       width: 38,
                       height: 38,

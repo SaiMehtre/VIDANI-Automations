@@ -284,57 +284,56 @@ Future<void> syncFromDevice() async {
         ],
       ),
 
-      /// ✅ BODY (UNCHANGED GRID)
+      /// BODY (UNCHANGED GRID)
       body: SafeArea(
-  child: Column(
-    children: [
+        child: Column(
+          children: [
 
-      /// 🔥 DEVICE BANNER (ADD HERE)
-      DeviceBanner(deviceId: widget.deviceId),
+            /// DEVICE BANNER (ADD HERE)
+            DeviceBanner(deviceId: widget.deviceId),
 
-      /// 👇 EXISTING BODY
-      Expanded(
-        child: loading
-            ? const Center(child: CircularProgressIndicator())
-            : LayoutBuilder(
-                builder: (context, constraints) {
-                  return SingleChildScrollView(
-                    padding: EdgeInsets.all(16 * scale),
-                    child: LayoutBuilder(
+            /// EXISTING BODY
+            Expanded(
+              child: loading
+                  ? const Center(child: CircularProgressIndicator())
+                  : LayoutBuilder(
                       builder: (context, constraints) {
-                        final isDesktop = constraints.maxWidth >= 1100;
-                        final isTablet = constraints.maxWidth >= 600;
+                        return SingleChildScrollView(
+                          padding: EdgeInsets.all(16 * scale),
+                          child: LayoutBuilder(
+                            builder: (context, constraints) {
+                              final isDesktop = constraints.maxWidth >= 1100;
+                              final isTablet = constraints.maxWidth >= 600;
 
-                        final cardWidth = isDesktop
-                            ? (constraints.maxWidth / 3) - 20
-                            : isTablet
-                                ? (constraints.maxWidth / 2) - 20
-                                : constraints.maxWidth;
+                              final cardWidth = isDesktop
+                                  ? (constraints.maxWidth / 3) - 20
+                                  : isTablet
+                                      ? (constraints.maxWidth / 2) - 20
+                                      : constraints.maxWidth;
 
-                        return Wrap(
-                          spacing: 16,
-                          runSpacing: 16,
-                          children: List.generate(totalSlots, (index) {
-                            return SizedBox(
-                              width: cardWidth,
-                              child: ScheduleSlot(
-                                slotNumber: index + 1,
-                                slotData: slots[index],
-                                onApply: sendScheduleCommand,
-                              ),
-                            );
-                          }),
+                              return Wrap(
+                                spacing: 16,
+                                runSpacing: 16,
+                                children: List.generate(totalSlots, (index) {
+                                  return SizedBox(
+                                    width: cardWidth,
+                                    child: ScheduleSlot(
+                                      slotNumber: index + 1,
+                                      slotData: slots[index],
+                                      onApply: sendScheduleCommand,
+                                    ),
+                                  );
+                                }),
+                              );
+                            },
+                          ),
                         );
                       },
                     ),
-                  );
-                },
-              ),
+            ),
+          ],
+        ),
       ),
-    ],
-  ),
-),
-
     );
   }
 }
@@ -507,7 +506,7 @@ class _ScheduleSlotState extends State<ScheduleSlot> {
                     );
                   }
 
-                  // 💻 NORMAL WIDTH
+                  // NORMAL WIDTH
                   return Row(
                     children: [
                       Expanded(
@@ -536,8 +535,8 @@ class _ScheduleSlotState extends State<ScheduleSlot> {
                 Expanded(
                   child: DropdownButtonFormField<String>(
                     initialValue: mode,
-                    isExpanded: true, // ✅ IMPORTANT
-                    isDense: true,    // ✅ IMPORTANT
+                    isExpanded: true, // IMPORTANT
+                    isDense: true,    // IMPORTANT
                     dropdownColor: const Color.fromARGB(255, 138, 195, 245),
                     decoration: _decor("Mode").copyWith(
                       contentPadding:
@@ -555,7 +554,7 @@ class _ScheduleSlotState extends State<ScheduleSlot> {
                             value: e,
                             child: Text(
                               e,
-                              overflow: TextOverflow.ellipsis, // ✅ prevents overflow
+                              overflow: TextOverflow.ellipsis, // prevents overflow
                             ),
                           ),
                         )
@@ -864,7 +863,7 @@ class _ScheduleSlotState extends State<ScheduleSlot> {
       final picked = await showTimePicker(
         context: context,
         initialTime: _parseTime(value),
-        initialEntryMode: TimePickerEntryMode.dial, // ⏰ Alarm style
+        initialEntryMode: TimePickerEntryMode.dial, // Alarm style
       );
 
       if (picked != null) {
@@ -993,7 +992,7 @@ List<String> _weekdayFromBitmask(int mask) {
     64: "Sat",
   };
 
-  // 👇 If all days or empty → treat as "All"
+  // If all days or empty → treat as "All"
   if (mask == 127 || mask == 0) {
     return ["All"];
   }

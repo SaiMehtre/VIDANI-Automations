@@ -3,7 +3,6 @@ import '../services/auth_service.dart';
 import 'dashboard_screen.dart';
 import '../services/secure_storage_service.dart';
 import '../core/session_manager.dart';
-// import 'package:shared_preferences/shared_preferences.dart'; // keep only for rememberMe flag
 
 
 
@@ -56,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
       await SecureStorageService.saveUsername(username);
       await SecureStorageService.savePassword(password);
     } else {
-      SessionManager.setToken(result.token!);  // 🔥 memory me store
+      SessionManager.setToken(result.token!);  // memory me store
     }
 
     Navigator.pushReplacement(
@@ -147,7 +146,7 @@ void dispose() {
                         children: [
                           // Shield / App Icon
                           ClipRRect(
-                            borderRadius: BorderRadius.circular(16), //  radius yaha change karo
+                            borderRadius: BorderRadius.circular(16), // radius yaha change karo
                             child: Image.asset(
                               'assets/images/vidani_icon.png',
                               height: isSmallScreen ? 70 : 90,

@@ -7,8 +7,6 @@ import '../state/dashboard_state.dart';
 import 'device_detail_screen.dart';
 import '../services/device_service.dart';
 import '../core/session_manager.dart';
-// import 'package:shared_preferences/shared_preferences.dart';  // use only if THIS ACTION BUTTON IS FOR SIGH OUT PASSWORD AND USER NAME VANISH
-
 
 enum DeviceFilter { all, online, offline, fault }
 
@@ -656,17 +654,6 @@ Widget _deviceCard(int i) {
       (st['iHealthy'] ?? true) == false);
 
 
-  // String fault = "";
-  // if (online && !pumpOn) {
-  //   if (st['phaseOk'] == false) {
-  //     fault = "PHASE FAULT";
-  //   } else if (st['vHealthy'] == false) {
-  //     fault = "VOLTAGE FAULT";
-  //   } else if (st['iHealthy'] == false) {
-  //     fault = "DRY RUN";
-  //   }
-  // }
-
   String fault = "";
 
   if (online) {
@@ -693,14 +680,6 @@ Widget _deviceCard(int i) {
             );
 
   return InkWell(
-    // onTap: () => Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (_) => DashboardScreen(
-    //       username: widget.username,
-    //     ),
-    //   ),
-    // ),
     onTap: () => Navigator.push(
       context,
       MaterialPageRoute(
@@ -1046,15 +1025,15 @@ Widget _statusRow(
                       /// text auto adjust
                       Flexible(
                         child: FittedBox(
-                          fit: BoxFit.scaleDown, //  MAGIC LINE
+                          fit: BoxFit.scaleDown, 
                           alignment: Alignment.centerLeft,
                           child: Text(
                             text,
-                            maxLines: 1,               //  still single line
+                            maxLines: 1,              
                             softWrap: false,
-                            overflow: TextOverflow.visible, //  ellipsis hata diya
+                            overflow: TextOverflow.visible,   
                             style: TextStyle(
-                              fontSize: fontSize,      // base size
+                              fontSize: fontSize,      
                               fontWeight: FontWeight.w900,
                               letterSpacing: 0.5,
                               color: Colors.black,
@@ -1234,8 +1213,7 @@ Widget _lastUpdate(DateTime? lastUpdate, bool online, bool pumpOn) {
                     fontWeight: FontWeight.w800,
                     color: mainColor,
                   ),
-                ),
-              
+                ),              
             ],
           ),
         ),

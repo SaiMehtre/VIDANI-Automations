@@ -91,7 +91,7 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen>
 
     fetchLive();
 
-    // 🔔 ALERT BADGE FETCH
+    // ALERT BADGE FETCH
     fetchAlertsForBadge();
 
     timer = Timer.periodic(const Duration(seconds: 5), (_) {
@@ -284,9 +284,7 @@ Future<void> fetchDeviceLocation() async {
   setState(() {
     deviceLocation = location;
   });
-}
-
-  
+} 
 
 
 //========Popup text on RTC on=========================
@@ -626,7 +624,7 @@ Widget build(BuildContext context) {
                 children: [
                         Expanded(
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center, // 👈 CENTER EVERYTHING
+                            mainAxisAlignment: MainAxisAlignment.center, // CENTER EVERYTHING
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               /// 🔹 Pump Status Icon
@@ -694,7 +692,7 @@ Widget build(BuildContext context) {
                         ),
 
                         Padding(
-                          padding: const EdgeInsets.only(right: 6), // 👈 adjust value here
+                          padding: const EdgeInsets.only(right: 6), // adjust value here
                           child: SizedBox(
                             // width: 135,
                             child: Column(

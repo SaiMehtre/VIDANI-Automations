@@ -6,7 +6,7 @@ class DeviceService {
 
   static Future<List<dynamic>> fetchDevices() async {
     final res = await ApiClient.get(
-      "${ApiConfig.baseUrl}/api/devices",  // ✅ FIXED
+      "${ApiConfig.baseUrl}/api/devices",  // FIXED
     );
 
     if (res.statusCode == 200) {
@@ -20,7 +20,7 @@ class DeviceService {
 
   static Future<Map<String, dynamic>> fetchLive(String id) async {
     final res = await ApiClient.get(
-      "${ApiConfig.baseUrl}/api/device/$id/live", // ✅ FIXED
+      "${ApiConfig.baseUrl}/api/device/$id/live", // FIXED
     );
 
     if (res.statusCode == 200) {

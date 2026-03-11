@@ -33,7 +33,6 @@ class SecureStorageService {
     await _storage.deleteAll();
   }
 
-  //save password
   // Save password
   static Future<void> savePassword(String password) async {
     await _storage.write(key: _passwordKey, value: password);

@@ -16,7 +16,7 @@ class DeviceBanner extends StatelessWidget {
       height: 24, // 
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 8),
-      // alignment: Alignment.center, // 👈 vertical center
+      // alignment: Alignment.center, // vertical center
       decoration: BoxDecoration(
         // borderRadius: BorderRadius.circular(16),
         borderRadius: BorderRadius.vertical(
@@ -26,7 +26,7 @@ class DeviceBanner extends StatelessWidget {
         color: Color.fromARGB(255, 241, 175, 205),  
       ),
       child: Row(
-        // crossAxisAlignment: CrossAxisAlignment.center, // 👈 extra safety
+        // crossAxisAlignment: CrossAxisAlignment.center, // extra safety
         children: [
           /// LEFT → Device ID
           Expanded(
@@ -37,7 +37,7 @@ class DeviceBanner extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Icon(
-                    Icons.memory, // 🔥 change icon if you want
+                    Icons.memory, // change icon if you want
                     size: screenWidth < 360 ? 12 : 16,
                     color: Colors.green.shade700,
                   ),

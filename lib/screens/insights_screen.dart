@@ -74,7 +74,7 @@ Color getPfColor(double pf) {
   if (pf < 0.80) {
     return const Color(0xFFD50000); // Poor
   } else if (pf < 0.90) {
-    return Colors.orange; // 🟠 Good
+    return Colors.orange; //  Good
   } else {
     return const Color(0xFF00C853); // Excellent
   }

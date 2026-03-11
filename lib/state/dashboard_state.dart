@@ -1,5 +1,5 @@
 import '../services/device_service.dart';
-import '../state/device_state.dart'; // 👈 ADD THIS IMPORT
+import '../state/device_state.dart'; // ADD THIS IMPORT
 
 class DashboardState {
   List devices = [];
@@ -11,9 +11,9 @@ Future<void> loadDevices() async {
 
   for (final d in devices) {
     final id = d['device_id'].toString();
-    final location = d['site']; // 👈 API me site aa raha hai
+    final location = d['site']; // API me site aa raha hai
 
-    // 👇 LOCATION SET KARO YAHI
+    // LOCATION SET KARO YAHI
     DeviceState.setLocation(id, location);
 
     deviceStatus[id] = {
