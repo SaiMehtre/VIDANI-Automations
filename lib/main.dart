@@ -6,6 +6,8 @@ import 'screens/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'screens/dashboard_screen.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'services/in_app_alert_notifier.dart';
+import 'services/alert_state.dart';
 
 // import 'screens/alert_screen.dart';
 
@@ -78,6 +80,7 @@ class _AuthCheckState extends State<AuthCheck> {
   }
 }
 
+
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
@@ -92,9 +95,25 @@ class _AuthCheckState extends State<AuthCheck> {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+void setupAlertNotifications() {
+
+  AlertState.onNewAlert = (msg, severity) {
+
+    final context = navigatorKey.currentContext;
+
+    if (context == null) return;
+
+    InAppAlertNotifier.show(
+      context,
+      message: msg,
+      severity: severity,
+    );
+  };
+}
 
   @override
   Widget build(BuildContext context) {
+    setupAlertNotifications();
     return MaterialApp(
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,

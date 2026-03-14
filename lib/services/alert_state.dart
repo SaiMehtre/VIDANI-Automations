@@ -1,6 +1,9 @@
 import 'package:flutter/foundation.dart';
 
 class AlertState {
+  // Alerts Modification
+  static void Function(String message, String severity)? onNewAlert;
+
   ///  unread count per device
   static final Map<String, ValueNotifier<int>> _unread = {};
 
@@ -98,6 +101,14 @@ class AlertState {
 
   //  ONLY REAL NEW ALERTS
   if (unread > prevUnread) {
+
+    final latest = alerts.first;
+
+    onNewAlert?.call(
+      latest['msg'] ?? "New Alert",
+      latest['severity'] ?? "info",
+    );
+    
     _animate[deviceId]?.value = true;
 
     Future.delayed(const Duration(milliseconds: 400), () {
