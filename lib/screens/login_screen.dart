@@ -339,12 +339,10 @@ void dispose() {
                 final url = Uri.parse(
                     'https://www.linkedin.com/in/sainathmehtre');
 
-                if (await canLaunchUrl(url)) {
-                  await launchUrl(
-                    url,
-                    mode: LaunchMode.externalApplication,
-                  );
-                }
+                await launchUrl(
+                  url,
+                  mode: LaunchMode.externalApplication,
+                );
               },
               child: const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 4),
@@ -369,12 +367,10 @@ void dispose() {
                 final url = Uri.parse(
                     'https://www.linkedin.com/in/sainathmehtre');
 
-                if (await canLaunchUrl(url)) {
-                  await launchUrl(
-                    url,
-                    mode: LaunchMode.externalApplication,
-                  );
-                }
+                await launchUrl(
+                  url,
+                  mode: LaunchMode.externalApplication,
+                );
               },
           ),
         ],
