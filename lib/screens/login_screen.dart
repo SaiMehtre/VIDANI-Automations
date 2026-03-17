@@ -3,6 +3,9 @@ import '../services/auth_service.dart';
 import 'dashboard_screen.dart';
 import '../services/secure_storage_service.dart';
 import '../core/session_manager.dart';
+import 'package:flutter/gestures.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 
 
@@ -304,18 +307,81 @@ void dispose() {
                       final isSmallScreen = constraints.maxWidth < 600;
 
                       return Column(
-                        children: [
-                          const SizedBox(height: 24),
-                          Text(
-                            '© 2026 Vidani Automations Pvt Ltd. All rights reserved.',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: isSmallScreen ? 10 : 13,
-                              color: Colors.white70,
-                            ),
-                          ),
-                        ],
-                      );
+  children: [
+    const SizedBox(height: 24),
+
+    Text(
+      '© 2026 Vidani Automations Pvt Ltd. All rights reserved.',
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: isSmallScreen ? 10 : 13,
+        color: Colors.white70,
+      ),
+    ),
+
+    const SizedBox(height: 8),
+
+    RichText(
+      textAlign: TextAlign.center,
+      text: TextSpan(
+        style: TextStyle(
+          fontSize: isSmallScreen ? 10 : 13,
+          color: Colors.white70,
+        ),
+        children: [
+          const TextSpan(text: 'Designed and developed by '),
+
+          // 🔗 LinkedIn Icon (inline)
+          WidgetSpan(
+            alignment: PlaceholderAlignment.middle,
+            child: GestureDetector(
+              onTap: () async {
+                final url = Uri.parse(
+                    'https://www.linkedin.com/in/sainathmehtre');
+
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(
+                    url,
+                    mode: LaunchMode.externalApplication,
+                  );
+                }
+              },
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 4),
+                child: FaIcon(
+                  FontAwesomeIcons.linkedin,
+                  size: 14,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+
+          // 👤 Name
+          TextSpan(
+            text: 'Sainath Mehtre',
+            style: const TextStyle(
+              color: Colors.white70,
+              decoration: TextDecoration.underline,
+            ),
+            recognizer: TapGestureRecognizer()
+              ..onTap = () async {
+                final url = Uri.parse(
+                    'https://www.linkedin.com/in/sainathmehtre');
+
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(
+                    url,
+                    mode: LaunchMode.externalApplication,
+                  );
+                }
+              },
+          ),
+        ],
+      ),
+    ),
+  ],
+);
                     },
                   ),
                 ],
