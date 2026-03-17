@@ -409,7 +409,7 @@ String getPfLabel(double pf) {
                           Expanded(
                             child: _luxuryMetric(
                               icon: Icons.flash_on,
-                              label: "Total Power Draw",
+                              label: "Current Load",
                               iconColor: const Color(0xFF2979FF),
                               value: odometerNumber(
                                 value: totalPowerKw,

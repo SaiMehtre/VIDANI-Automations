@@ -544,15 +544,15 @@ Widget build(BuildContext context) {
                     padding: const EdgeInsets.all(8),
                     child: Column(
                       children: [
+                        _statusCards(),
+                        const SizedBox(height: 10),
                         _topStatusBar(),
                         // const SizedBox(height: 10),
                         _voltageWarningBanner(),
                         const SizedBox(height: 10),
-                        _statusCards(),
+                        _rybLedIndicator(),
                         const SizedBox(height: 10),
                         _rybSection(),
-                        const SizedBox(height: 10),
-                        _rybLedIndicator(),
                         const SizedBox(height: 10),
                       ],
                     ),

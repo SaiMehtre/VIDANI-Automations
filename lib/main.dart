@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:flutter/foundation.dart';
+// import 'package:firebase_core/firebase_core.dart';
 
 import 'screens/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,23 +20,23 @@ Future<void> main() async {
   await dotenv.load(fileName: ".env");
 
   ///  Firebase init (WEB + ANDROID)
-  if (kIsWeb) {
-    await Firebase.initializeApp(
-      options: const FirebaseOptions(
-        apiKey: "AIzaSyBhJ2w66BYuolLcmJxRfBxC5R_ZhGoRFhk",
-        authDomain: "vidani-automations.firebaseapp.com",
-        projectId: "vidani-automations",
-        storageBucket: "vidani-automations.firebasestorage.app",
-        messagingSenderId: "685588830735",
-        appId: "1:685588830735:web:c70759ed21a6373c4da17a",
-        measurementId: "G-RTKDWY6GNF",
-      ),
-    );
-  } else {
-    await Firebase.initializeApp();
-  }
+  // if (kIsWeb) {
+  //   await Firebase.initializeApp(
+  //     options: const FirebaseOptions(
+  //       apiKey: "AIzaSyBhJ2w66BYuolLcmJxRfBxC5R_ZhGoRFhk",
+  //       authDomain: "vidani-automations.firebaseapp.com",
+  //       projectId: "vidani-automations",
+  //       storageBucket: "vidani-automations.firebasestorage.app",
+  //       messagingSenderId: "685588830735",
+  //       appId: "1:685588830735:web:c70759ed21a6373c4da17a",
+  //       measurementId: "G-RTKDWY6GNF",
+  //     ),
+  //   );
+  // } else {
+  //   await Firebase.initializeApp();
+  // }
 
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 
@@ -93,7 +93,9 @@ class _AuthCheckState extends State<AuthCheck> {
 
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+   MyApp({super.key}) {
+    setupAlertNotifications();
+  }
 
 void setupAlertNotifications() {
 
@@ -113,7 +115,6 @@ void setupAlertNotifications() {
 
   @override
   Widget build(BuildContext context) {
-    setupAlertNotifications();
     return MaterialApp(
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
